@@ -1,0 +1,249 @@
+body,html{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    font-family: "Oxanium", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    background-image: url("/images/frame 1 1.png");
+    background-repeat: no-repeat;
+    background-color: rgb(110,155,188);
+}
+
+.img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 500px;
+    border-radius: 20px;
+    z-index: 100;
+    padding: 50px;
+    position: absolute;
+    top: 60px;
+    backdrop-filter: blur(25px);
+    box-shadow: rgba(0, 47, 92, 0.56) 0px 22px 70px 4px;
+    border: 1px solid rgb(217, 217, 217) ;
+    animation-name: boxzoom;
+    animation-duration: 1s;
+}
+
+@keyframes boxzoom {
+    from {
+        transform: scale(80%);
+    }
+    to{
+        transform: scale(100%);
+    }
+}
+
+.box .temp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+}
+
+.box .temp h1{
+    font-size: 50px;
+    margin: 10px;
+    animation-name: translateh1;
+    animation-duration: 1s;
+}
+
+@keyframes translateh1{
+    from{
+        transform: translateX(-50%);
+        -webkit-filter: blur(50px);
+    }
+    to{
+        transform: translateX(0%);
+        -webkit-filter: blur(0px);
+    }
+}
+
+.box .temp h3{
+    font-size: 20px;
+    margin: 10px;
+    animation-name: translateh1;
+    animation-duration: 1s;
+}
+
+.box .temp h2{
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+     animation-name: translateh1;
+    animation-duration: 1s;
+}
+
+.box .temp img{
+    height: auto;
+    max-width: 100%;
+    animation-name: translateimg;
+    animation-duration: 1s;
+}
+
+@keyframes translateimg{
+    from{
+        translate:20%;
+        -webkit-filter: blur(50px);
+    }
+    to{
+        translate:0%;
+        -webkit-filter: blur(0px);
+    }
+}
+.box .others{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+    gap: 100px;
+    font-size: 20px;
+    animation-name: translateothers;
+    animation-duration: 1s;
+}
+
+@keyframes translateothers{
+    from{
+        transform: translateY(100%);
+        -webkit-filter: blur(50px);
+    }
+    to{
+        transform: translateY(0%);
+        -webkit-filter: blur(0px);
+    }
+}
+
+.box .others div i{
+    font-size: 50px;
+}
+
+.img .box .input{
+    margin-bottom: 10px;
+    animation-name: translateinput;
+    animation-duration: 1s;
+}
+
+@keyframes translateinput{
+    from{
+        transform: translateY(-100%);
+        -webkit-filter: blur(50px);
+    }
+    to{
+        transform: translateY(0%);
+        -webkit-filter: blur(0px);
+    }
+}
+.img .box .input input{
+    font-size: 17px;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+input::placeholder{
+    color: white;
+}
+
+@media (max-width: 450px){
+
+    .box{
+        width: auto;
+        margin-left: 10px;
+        margin-right: 10px;
+        position: absolute;
+        top: 30px;
+        padding: 30px;
+    }
+
+    .input form input{
+        width: 180px;
+    }
+    .input form #search_place{
+        width: 70px;
+    }
+
+    .box .temp img{
+        height: 180px;
+        width: 180px;
+    }
+
+    .box .temp h1{
+        font-size: 40px;
+        margin-top: 30px;
+    }
+
+    .box .temp h2{
+        font-size: 20px;
+    }
+
+    .box .temp h3{
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 380px){
+    .box {
+        padding: 25px;
+    }
+    .input form input{
+        width: 150px;
+    }
+}
+
+@media (max-height: 800px){
+    
+   .img .box .temp h1{
+    font-size: 40px;
+   }
+
+   .img .box .temp h2{
+    font-size: 20px;
+   }
+
+   .img .box .temp h3{
+    font-size: 15px;
+   }
+
+   .box{
+    position: absolute;
+    top: 40px;
+   }
+
+   .img .box .temp img{
+    height: 200px;
+    width: 200px;
+}
+}
+
+@media (max-height: 700px){
+  
+    .img .box .temp img{
+        height: 150px;
+        width: 150px;
+    }
+
+    .box{
+        padding: 30px;
+        position: absolute;
+        top: 20px;
+    }
+}

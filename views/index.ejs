@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css" /> 
+    <title>Weather</title>
+</head>
+<body>
+    <div class="img">
+        
+        <div class="box">
+            <div class="input">
+                <form method="post">
+                <input class="search" type="search" placeholder="Search your city" name="search">
+                <input id="search_place" type="submit" value="Search" formaction="/search" style="cursor: pointer;">
+                </form>
+            </div>
+            <% if (locals.weather_data && locals.location_data) { %>
+                <% if (weather_data.weather[0].description == "clear sky") {%>
+                    <div class="temp">
+                        <img src="/images/sun.png"/>
+                        <h1><%= weather_data.main.temp %>°C</h1>
+                        <h2><%= weather_data.weather[0].description %></h2>
+                        <h3><%= location_data.name %></h3>
+                        <h2><%= location_data.state %>, <%= location_data.country %></h2>
+                    </div>
+
+                    <div class="others">
+                        <div>
+                            <i class="bi bi-wind"></i>
+                            <p style="margin: 0;"><%= weather_data.wind.speed %> m/sec</p>
+                        </div>
+                        <div>
+                            <i class="bi bi-droplet"></i>
+                            <p style="margin: 0;"><%= weather_data.main.humidity %> %</p>
+                        </div>
+                    </div>
+                  <% } else if (weather_data.weather[0].description == "few clouds") { %>
+                    <div class="temp">
+                        <img src="/images/weather.png"/>
+                        <h1><%= weather_data.main.temp %>°C</h1>
+                        <h2><%= weather_data.weather[0].description %></h2>
+                        <h3><%= location_data.name %></h3>
+                        <h2><%= location_data.state %>, <%= location_data.country %></h2>
+                    </div>
+
+                    <div class="others">
+                        <div>
+                            <i class="bi bi-wind"></i>
+                            <p style="margin: 0;"><%= weather_data.wind.speed %> m/sec</p>
+                        </div>
+                        <div>
+                            <i class="bi bi-droplet"></i>
+                            <p style="margin: 0;"><%= weather_data.main.humidity %> %</p>
+                        </div>
+                    </div>
+                  <% } else if (weather_data.weather[0].description == "scattered clouds" || weather_data.weather[0].description == "broken clouds" || weather_data.weather[0].description == "overcast clouds") { %>
+                    <div class="temp">
+                        <img src="/images/clouds.png"/>
+                        <h1><%= weather_data.main.temp %>°C</h1>
+                        <h2><%= weather_data.weather[0].description %></h2>
+                        <h3><%= location_data.name %></h3>
+                        <h2><%= location_data.state %>, <%= location_data.country %></h2>
+                    </div>
+
+                    <div class="others">
+                        <div>
+                            <i class="bi bi-wind"></i>
+                            <p style="margin: 0;"><%= weather_data.wind.speed %> m/sec</p>
+                        </div>
+                        <div>
+                            <i class="bi bi-droplet"></i>
+                            <p style="margin: 0;"><%= weather_data.main.humidity %> %</p>
+                        </div>
+                    </div>
+                  <% } else if (weather_data.weather[0].description == "shower rain" || weather_data.weather[0].description == "rain" || weather_data.weather[0].description == "light rain" || weather_data.weather[0].description == "moderate rain" || weather_data.weather[0].description == "heavy intensity rain" || weather_data.weather[0].description == "very heavy rain" || weather_data.weather[0].description == "extreme rain" || weather_data.weather[0].description == "light intensity shower rain" || weather_data.weather[0].description == "heavy intensity shower rain" || weather_data.weather[0].description == "ragged shower rain") { %>  
+                    <div class="temp">
+                        <img src="/images/heavy-rain.png"/>
+                        <h1><%= weather_data.main.temp %>°C</h1>
+                        <h2><%= weather_data.weather[0].description %></h2>
+                        <h3><%= location_data.name %></h3>
+                        <h2><%= location_data.state %>, <%= location_data.country %></h2>
+                    </div>
+
+                    <div class="others">
+                        <div>
+                            <i class="bi bi-wind"></i>
+                            <p style="margin: 0;"><%= weather_data.wind.speed %> m/sec</p>
+                        </div>
+                        <div>
+                            <i class="bi bi-droplet"></i>
+                            <p style="margin: 0;"><%= weather_data.main.humidity %> %</p>
+                        </div>
+                    </div>
+                    <% } else if (weather_data.weather[0].description == "freezing rain") { %>
+                        <div class="temp">
+                            <img src="/images/snow.png"/>
+                            <h1><%= weather_data.main.temp %>°C</h1> 
+                            <h2><%= weather_data.weather[0].description %></h2>
+                            <h3><%= location_data.name %></h3>
+                            <h2><%= location_data.state %>, <%= location_data.country %></h2>
+                        </div>
+    
+                        <div class="others">
+                            <div>
+                                <i class="bi bi-wind"></i>
+                                <p style="margin: 0;"><%= weather_data.wind.speed %> m/sec</p>
+                            </div>
+                            <div>
+                                <i class="bi bi-droplet"></i>
+                                <p style="margin: 0;"><%= weather_data.main.humidity %> %</p>
+                            </div>
+                        </div>
+                        <% } else if (weather_data.weather[0].description == "drizzle" || weather_data.weather[0].description == "light intensity drizzle" || weather_data.weather[0].description == "heavy intensity drizzle" || weather_data.weather[0].description == "light intensity drizzle rain" || weather_data.weather[0].description == "drizzle rain" || weather_data.weather[0].description == "heavy intensity drizzle rain" || weather_data.weather[0].description == "shower rain and drizzle" || weather_data.weather[0].description == "heavy shower rain and drizzle" || weather_data.weather[0].description == "shower drizzle") { %>
+                            <div class="temp">
+                                <img src="/images/rainy-day.png"/>
+                                <h1><%= weather_data.main.temp %>°C</h1> 
+                                <h2><%= weather_data.weather[0].description %></h2>
+                                <h3><%= location_data.name %></h3>
+                                <h2><%= location_data.state %>, <%= location_data.country %></h2>
+                            </div>
+        
+                            <div class="others">
+                                <div>
+                                    <i class="bi bi-wind"></i>
+                                    <p style="margin: 0;"><%= weather_data.wind.speed %> m/sec</p>
+                                </div>
+                                <div>
+                                    <i class="bi bi-droplet"></i>
+                                    <p style="margin: 0;"><%= weather_data.main.humidity %> %</p>
+                                </div>
+                            </div>
+                  <% } else if (weather_data.weather[0].description == "thunderstorm" || weather_data.weather[0].description == "thunderstorm with light rain" || weather_data.weather[0].description == "thunderstorm with rain" || weather_data.weather[0].description == "thunderstorm with heavy rain" || weather_data.weather[0].description == "light thunderstorm" || weather_data.weather[0].description == "heavy thunderstorm" || weather_data.weather[0].description == "ragged thunderstorm" || weather_data.weather[0].description == "thunderstorm with light drizzle" || weather_data.weather[0].description == "thunderstorm with drizzle" || weather_data.weather[0].description == "thunderstorm with heavy drizzle") { %>
+                    <div class="temp">
+                        <img src="/images/storm.png"/>
+                        <h1><%= weather_data.main.temp %>°C</h1> 
+                        <h2><%= weather_data.weather[0].description %></h2>
+                        <h3><%= location_data.name %></h3>
+                        <h2><%= location_data.state %>, <%= location_data.country %></h2>
+                    </div>
+
+                    <div class="others">
+                        <div>
+                            <i class="bi bi-wind"></i>
+                            <p style="margin: 0;"><%= weather_data.wind.speed %> m/sec</p>
+                        </div>
+                        <div>
+                            <i class="bi bi-droplet"></i>
+                            <p style="margin: 0;"><%= weather_data.main.humidity %> %</p>
+                        </div>
+                    </div>
+                  <% } else if (weather_data.weather[0].description == "snow" || weather_data.weather[0].description == "light snow" || weather_data.weather[0].description == "heavy snow" || weather_data.weather[0].description == "sleet" || weather_data.weather[0].description == "light shower sleet" || weather_data.weather[0].description == "shower sleet" || weather_data.weather[0].description == "light rain and snow" || weather_data.weather[0].description == "rain and snow" || weather_data.weather[0].description == "shower snow" || weather_data.weather[0].description == "heavy shower snow") { %>
+                    <div class="temp">
+                        <img src="/images/snowflake.png"/>
+                        <h1><%= weather_data.main.temp %>°C</h1>
+                        <h2><%= weather_data.weather[0].description %></h2>
+                        <h3><%= location_data.name %></h3>
+                        <h2><%= location_data.state %>, <%= location_data.country %></h2>
+                    </div>
+
+                    <div class="others">
+                        <div>
+                            <i class="bi bi-wind"></i>
+                            <p style="margin: 0;"><%= weather_data.wind.speed %> m/sec</p>
+                        </div>
+                        <div>
+                            <i class="bi bi-droplet"></i>
+                            <p style="margin: 0;"><%= weather_data.main.humidity %> %</p>
+                        </div>
+                    </div>
+                  <% } else { %>  
+                    <div class="temp">
+                        <img src="/images/mist.png"/>
+                        <h1><%= weather_data.main.temp %>°C</h1>
+                        <h2><%= weather_data.weather[0].description %></h2>
+                        <h3><%= location_data.name %></h3>
+                        <h2><%= location_data.state %>, <%= location_data.country %></h2>
+                    </div>
+
+                    <div class="others">
+                        <div>
+                            <i class="bi bi-wind"></i>
+                            <p style="margin: 0;"><%= weather_data.wind.speed %> m/sec</p>
+                        </div>
+                        <div>
+                            <i class="bi bi-droplet"></i>
+                            <p style="margin: 0;"><%= weather_data.main.humidity %> %</p>
+                        </div>
+                    </div>
+                  <% } %>  
+             <% } else if (locals.error) { %>   
+                <h2><%= code %></h2>
+                <h3><%= message %></h3>
+             <% } %>   
+        </div>
+    </div>   
+</body>
+</html>
